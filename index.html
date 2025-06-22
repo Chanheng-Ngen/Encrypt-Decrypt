@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math | Encryption-Decryption</title>
+    <link rel="stylesheet" href="./src/output.css">
+</head>
+<body>
+   <header class="sticky top-0"> 
+        <nav class="w-full h-18 bg-blue-700 flex items-center justify-between px-5 md:px-12">
+            <!-- logo -->
+            <aside class="h-full flex items-center gap-x-2">
+                <div class="w-12 h-12 md:w-14 md:h-14">
+                    <img class="w-full h-full" src="./assets/image/RUPP_logo.svg" alt="RUPP_logo">
+                </div>
+                <div class="w-0.5 md:w-1 h-full bg-white"></div>
+                <div class="w-12 h-12 md:w-14 md:h-14">
+                    <img class="w-full h-full" src="./assets/image/Fe_logo.svg" alt="Factory_loo">
+                </div>
+            </aside>
+            <!-- content link -->
+            <aside class="h-full flex items-center gap-x-2">
+                <ul class="md:flex items-center gap-x-6">
+                    <li class="text-white text-[1rem] md:text-[1.2rem] font-medium hover:underline cursor-pointer"><a href="#Caesar_Cipher">Caesar Cipher</a></li>
+                    <li class="text-white text-[1rem] md:text-[1.2rem] font-medium hover:underline cursor-pointer"><a href="#RSA">RSA Cryptography</a></li>
+                </ul>
+            </aside>
+        </nav>
+   </header>
+
+   <main class="w-full px-2 md:px-12">
+        <section class="w-full flex justify-center border-b-1 border-gray-400 mb-5">
+            <div class="w-full">
+                <h1 class="text-3xl md:text-4xl font-bold text-center my-3 md:my-6">Encryption & Decryption</h1>
+                <h2 class="text-2xl md:text-3xl font-bold text-center my-2">Lecture : Mr. LIM Seyha</h2>
+                <h2 class="text-2xl md:text-3xl font-bold text-center my-2">Team member</h2>
+                <ul class="flex justify-center gap-x-1 my-4">
+                    <li class="text-[13px] md:text-2xl font-medium ">Ngen Chanheng,</li>
+                    <li class="text-[13px] md:text-2xl font-medium ">Nam Kimhorng,</li>
+                    <li class="text-[13px] md:text-2xl font-medium ">Tun Sievkheng,</li>
+                    <li class="text-[13px] md:text-2xl font-medium ">Chit Socheata</li>
+                </ul>
+                <ul class="flex justify-center gap-x-5 my-3 md:my-6">
+                    <li class="text-[13px] md:text-2xl font-medium">Kea Sopanha,</li>
+                    <li class="text-[13px] md:text-2xl font-medium">Chhit Leakhena,</li>
+                    <li class="text-[13px] md:text-2xl font-medium">Kuy Meyei</li>
+                </ul>
+                <p class="text-xs text-end text-gray-500">Date: June, 22, 2025</p>
+            </div>
+        </section>
+
+        <section id="Caesar_Cipher" class="scroll-mt-20">
+            <div>
+                <h2 class="text-2xl md:text-3xl font-bold">I. Caesar Cipher</h2>
+                <p class="text-[1.2rem] my-3 pl-5">The Caesar Cipher is one of the oldest and simplest encryption techniques. It’s a type of substitution cipher where each letter in the plaintext is shifted a fixed number of places down or up the alphabet.
+                </p>
+            </div>
+            <div>
+                <h2 class="text-[1.2rem] md:text-2xl font-medium">1.1 Assign numbers to each letter</h2>
+                <p class="text-[1.2rem] my-3 pl-5">A = 0, B = 1, C = 2, D = 3, E = 4, F = 5, G = 6, H = 7, I = 8, J = 9, K = 10, L = 11, M = 12, N = 13, O = 14, P = 15, Q =16, R = 17, S = 18, T = 19, U = 20, V = 21, W = 22, X = 23, Y = 24, Z = 25</p>
+            </div>
+            <div class="mb-3">
+                <h2 class="text-[1.2rem] md:text-2xl font-medium">1.2 Convert the plaintext into numbers</h2>
+                <p class="text-[1.2rem] my-3 pl-5">In the Caesar Cipher, each letter of the alphabet is assigned a number starting from A = 0, B = 1, C = 2, and continuing up to Z = 25. So when you take the word "MATH", you convert each letter into its number based on this system:</p>
+                <ul class="list-disc pl-9">
+                    <li class="text-[1.2rem]">M is the 13th letter of the alphabet, but since we start counting from 0, M = 12.</li>
+                    <li class="text-[1.2rem]">A is the 1st letter, so A = 0.</li>
+                    <li class="text-[1.2rem]">T is the 20th letter, so T = 19.</li>
+                    <li class="text-[1.2rem]">H is the 8th letter, so H = 7.</li>
+                </ul>
+            </div>
+            <div>
+                <h2 class="text-[1.2rem] md:text-2xl font-medium">1.3 Encrypt the numbers by adding 3 to each</h2>
+                <p class="text-[1.2rem] my-3 pl-5">First, convert each letter to its number using the standard Caesar Cipher system, where A = 0, B = 1, ..., Z =25.</p>
+                <ul class="list-disc pl-9">
+                    <li class="text-[1.2rem]">M becomes 12</li>
+                    <li class="text-[1.2rem]">A becomes 0</li>
+                    <li class="text-[1.2rem]">T becomes 19</li>
+                    <li class="text-[1.2rem]">H becomes 7</li>
+                </ul>
+                <p class="text-[1.2rem] my-3 pl-9">Next, apply a Caesar Cipher shift of +3 by adding 3 to each number: </p>
+                <ul class="list-disc pl-9">
+                    <li class="text-[1.2rem]">12 + 3 = 15</li>
+                    <li class="text-[1.2rem]">0 + 3 = 3</li>
+                    <li class="text-[1.2rem]">19 + 3 = 22</li>
+                    <li class="text-[1.2rem]">7 + 3 = 10</li>
+                </ul>
+                <p class="text-[1.2rem] my-3 pl-9">So the encrypted numbers are: 15, 3, 22, 10</p>
+            </div>
+            <div class="mb-3">
+                <h2 class="text-[1.2rem] md:text-2xl font-medium">1.4 Finally, convert those numbers back to letters:</h2>
+                <ul class="list-disc pl-9">
+                    <li class="text-[1.2rem]">15 = P</li>
+                    <li class="text-[1.2rem]">3 = D</li>
+                    <li class="text-[1.2rem]">22 = W</li>
+                    <li class="text-[1.2rem]">10 = K</li>
+                </ul>
+                <p class="text-[1.2rem] my-3 pl-9">So, after encryption, "MATH" becomes "PDWK" using a Caesar Cipher with a shift of +3.</p>
+            </div>
+        </section>
+
+        <section class="border-b-1 border-gray-400 mb-5">
+            <h2 class="text-2xl md:text-3xl font-bold">II. Caesar Cipher Demo</h2>
+            <div class="w-[80%] mx-auto my-5">
+                <label for="txtCaesar" class="text-[1.1rem]">Enter your text</label>
+                <br>
+                <input class="w-full border-none outline-1 outline-gray-500 rounded-[5px] pl-2 py-2 text-[1rem] my-3" type="text" placeholder="Hello" id="txtCaesar">
+                <div class="flex justify-center gap-x-5">
+                    <button class="cursor-pointer hover:bg-blue-600 px-4 py-1 bg-blue-500 text-white rounded">Encrypt</button>
+                    <button class="cursor-pointer hover:bg-green-600 px-4 py-1 bg-green-500 text-white rounded">Decrypt</button>
+                </div>
+                <p class="text-[1.1rem]">Result: </p>
+            </div>
+        </section>
+
+        <section id="RSA" class="border-b-1 border-gray-400 mb-5 scroll-mt-20">
+            <h2 class="text-2xl md:text-3xl font-bold">III. RSA Cryptography</h2>
+            <div>
+                <p class="text-[1.2rem] my-3 pl-5">is a secure encryption method used to protect sensitive information, especially on the internet. It’s a type of
+                    asymmetric cryptography, meaning it uses two keys: a public key to encrypt data and a private key to decrypt it.</p>
+                <div class="w-[330px] h-36 mx-auto">
+                    <img class="w-full h-full" src="./assets/image/RSA.png" alt="RSA">
+                </div>
+                <p class="text-[1.2rem] my-3 pl-5">Rivest–Shamir–Adleman (Full word )</p>
+                <p class="text-[1.2rem] my-3 pl-5">Public key: Shared with anyone. Used to encrypt messages.</p>
+                <p class="text-[1.2rem] my-3 pl-5">Private key: Kept secret. Used to decrypt messages.</p>
+                <p class="text-[1.2rem] my-3 pl-5">Why is RSA Secure?</p>
+                <p class="text-[1.2rem] my-3 pl-5">It’s extremely hard to break because it relies on the difficulty of factoring a very large number (n) into its two prime
+                factors. This is called the factoring problem, and it's what makes RSA strong.</p>
+                <p class="text-[1.2rem] my-3 pl-5">Real-Life Uses of RSA:</p>
+                <ul class="list-disc pl-9">
+                    <li class="text-[1.2rem]">HTTPS (secure websites)</li>
+                    <li class="text-[1.2rem]">Email encryption</li>
+                    <li class="text-[1.2rem]">Digital signatures</li>
+                    <li class="text-[1.2rem]">Secure communication apps</li>
+                </ul>
+            </div>
+            <div>
+                <h2 class="text-[1.2rem] md:text-2xl font-medium">3.1 RSA Demo</h2>
+                <h2 class="text-[1.2rem] md:text-2xl font-medium">3.2 RSA Keygen</h2>
+                <div class="w-[80%] mx-auto">
+                    <div class="w-full flex justify-center gap-x-5">
+                        <div class="w-full">
+                            <label for="primeOne" class="text-[1.1rem]">Enter the first prime number p:</label>
+                            <input class="w-full border-none outline-1 outline-gray-500 rounded-[5px] pl-2 py-2 text-[1rem] my-3" type="number" placeholder="3" id="primeOne">
+                        </div>
+                        <div class="w-full">
+                            <label for="primeSeconde" class="text-[1.1rem]">Enter the second prime number q:</label>
+                            <input class="w-full border-none outline-1 outline-gray-500 rounded-[5px] pl-2 py-2 text-[1rem] my-3" type="number" placeholder="5" id="primeSeconde">
+                        </div>
+                    </div>
+                    <div class="flex justify-center my-2"><button class="cursor-pointer hover:bg-yellow-600 px-4 py-1 bg-yellow-500 text-white rounded">Generate Key</button></div>
+                    <p class="text-[1.1rem] my-2">Result: </p>
+                </div>
+                <h2 class="text-[1.2rem] md:text-2xl font-medium">3.3 RSA Encryption</h2>
+                <div class="w-[80%] mx-auto">
+                    <div class="w-full mt-5">
+                        <label for="txtEn" class="text-[1.1rem]">Enter text: </label>
+                        <input class="w-full border-none outline-1 outline-gray-500 rounded-[5px] pl-2 py-2 text-[1rem] my-3" type="text" placeholder="hello" id="txtEn">
+                    </div>
+                    <div class="w-full flex justify-center gap-x-5">
+                        <div class="w-full">
+                            <label for="key" class="text-[1.1rem]">Enter the public key(e): </label>
+                            <input class="w-full border-none outline-1 outline-gray-500 rounded-[5px] pl-2 py-2 text-[1rem] my-3" type="number" placeholder="3" id="key">
+                        </div>
+                        <div class="w-full">
+                            <label for="modulus" class="text-[1.1rem]">Enter the modulus(n): </label>
+                            <input class="w-full border-none outline-1 outline-gray-500 rounded-[5px] pl-2 py-2 text-[1rem] my-3" type="modulus" placeholder="5" id="primeSeconde">
+                        </div>
+                    </div>
+                    <div class="flex justify-center my-2"><button class="cursor-pointer hover:bg-blue-600 px-4 py-1 bg-blue-500 text-white rounded">Encrypt</button></div>
+                    <p class="text-[1.1rem] my-2">Result: </p>
+                </div>
+                <h2 class="text-[1.2rem] md:text-2xl font-medium">3.4 RSA Decryption</h2>
+                <div class="w-[80%] mx-auto">
+                    <div class="w-full mt-5">
+                        <label for="txtEn" class="text-[1.1rem]">Enter your text Encrypted Message: </label>
+                        <input class="w-full border-none outline-1 outline-gray-500 rounded-[5px] pl-2 py-2 text-[1rem] my-3" type="text" placeholder="hello" id="txtEn">
+                    </div>
+                    <div class="w-full flex justify-center gap-x-5">
+                        <div class="w-full">
+                            <label for="pKey" class="text-[1.1rem]">Enter the private key(d) </label>
+                            <input class="w-full border-none outline-1 outline-gray-500 rounded-[5px] pl-2 py-2 text-[1rem] my-3" type="number" placeholder="3" id="pKey">
+                        </div>
+                        <div class="w-full">
+                            <label for="modulusSe" class="text-[1.1rem]">Enter the modulus(n): </label>
+                            <input class="w-full border-none outline-1 outline-gray-500 rounded-[5px] pl-2 py-2 text-[1rem] my-3" type="modulusSe" placeholder="5" id="primeSeconde">
+                        </div>
+                    </div>
+                    <div class="flex justify-center my-2"><button class="cursor-pointer hover:bg-green-600 px-4 py-1 bg-green-500 text-white rounded">Decrypt</button></div>
+                    <p class="text-[1.1rem] my-2">Result: </p>
+                </div>
+            </div> 
+        </section>
+   </main>
+
+   <footer>
+    <p class="text-xs text-gray-600 text-center mt-5">Dartpartment ITE Generation10</p>
+   </footer>
+</body>
+</html>
