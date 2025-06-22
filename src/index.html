@@ -104,16 +104,17 @@
             <h2 class="text-2xl md:text-3xl font-bold">II. Caesar Cipher Demo</h2>
             <div class="w-[80%] mx-auto my-5">
                 <label for="txtCaesar" class="text-[1.1rem]">Enter your text</label>
+                <p id="statusMessage" class="text-green-600 font-medium text-center"></p>
                 <br>
                 <input class="w-full border-none outline-1 outline-gray-500 rounded-[5px] pl-2 py-2 text-[1rem] my-3" type="text" placeholder="Hello" id="txtCaesar">
                 <div class="flex justify-center gap-x-5">
-                    <button class="cursor-pointer hover:bg-blue-600 px-4 py-1 bg-blue-500 text-white rounded">Encrypt</button>
-                    <button class="cursor-pointer hover:bg-green-600 px-4 py-1 bg-green-500 text-white rounded">Decrypt</button>
+                    <button id="btnEncrypt" class="cursor-pointer hover:bg-blue-600 px-4 py-1 bg-blue-500 text-white rounded">Encrypt</button>
+                    <button id="btnDecrypt" class="cursor-pointer hover:bg-green-600 px-4 py-1 bg-green-500 text-white rounded">Decrypt</button>
                 </div>
-                <p class="text-[1.1rem]">Result: </p>
+                <p id="result" class="text-[1.1rem]">Result: </p>
             </div>
         </section>
-
+ 
         <section id="RSA" class="border-b-1 border-gray-400 mb-5 scroll-mt-20">
             <h2 class="text-2xl md:text-3xl font-bold">III. RSA Cryptography</h2>
             <div>
@@ -199,4 +200,5 @@
     <p class="text-xs text-gray-600 text-center mt-5">Dartpartment ITE Generation10</p>
    </footer>
 </body>
+<script src="./assets/javaScript/encrypt_decrypt.js"></script>
 </html>
