@@ -1,3 +1,4 @@
+
 const shift = 3;
 
 function caesarEncrypt(text, shift) {
@@ -16,42 +17,41 @@ function caesarDecrypt(text, shift) {
     return caesarEncrypt(text, 26 - shift);
 }
 
-window.addEventListener('DOMContentLoaded', () => {
+function showStatusMessage(status, message, isSuccess) {
+    status.textContent = message;
+    status.classList.remove('text-green-600', 'text-red-600');
+    status.classList.add(isSuccess ? 'text-green-600' : 'text-red-600');
+    setTimeout(() => {
+        status.textContent = '';
+    }, 3000);
+}
+
+export function setupCaesarCipher() {
     const input = document.getElementById('txtCaesar');
     const result = document.getElementById('result');
     const status = document.getElementById('statusMessage');
     const btnEncrypt = document.getElementById('btnEncrypt');
     const btnDecrypt = document.getElementById('btnDecrypt');
 
-    function showStatusMessage(message, isSuccess) {
-        status.textContent = message;
-        status.classList.remove('text-green-600', 'text-red-600');
-        status.classList.add(isSuccess ? 'text-green-600' : 'text-red-600');
-
-        setTimeout(() => {
-            status.textContent = '';
-        }, 3000); // Auto-clear after 3 seconds
-    }
-
     btnEncrypt.addEventListener('click', () => {
         const text = input.value.trim();
         if (text === "") {
-            showStatusMessage("Please enter text to encrypt.", false);
+            showStatusMessage(status, "Please enter text to encrypt.", false);
             return;
         }
         const encrypted = caesarEncrypt(text, shift);
         result.textContent = 'Result: ' + encrypted;
-        showStatusMessage("Encryption successful!", true);
+        showStatusMessage(status, "Encryption successful!", true);
     });
 
     btnDecrypt.addEventListener('click', () => {
         const text = input.value.trim();
         if (text === "") {
-            showStatusMessage("Please enter text to decrypt.", false);
+            showStatusMessage(status, "Please enter text to decrypt.", false);
             return;
         }
         const decrypted = caesarDecrypt(text, shift);
         result.textContent = 'Result: ' + decrypted;
-        showStatusMessage("Decryption successful!", true);
+        showStatusMessage(status, "Decryption successful!", true);
     });
-});
+}

@@ -46,7 +46,10 @@
                     <li class="text-[13px] md:text-2xl font-medium">Chhit Leakhena,</li>
                     <li class="text-[13px] md:text-2xl font-medium">Kuy Meyei</li>
                 </ul>
-                <p class="text-xs text-end text-gray-500">Date: June, 22, 2025</p>
+                <div class="flex justify-end">
+                    <a href="https://github.com/Chanheng-Ngen/Encrypt-Decrypt" target="_blank" class="text-xs text-gray-500 mr-1 hover:text-gray-700">Source code </a>
+                    <p class="text-xs text-gray-500">| Date: June, 22, 2025</p>
+                </div>
             </div>
         </section>
 
@@ -106,7 +109,7 @@
                 <label for="txtCaesar" class="text-[1.1rem]">Enter your text</label>
                 <p id="statusMessage" class="text-green-600 font-medium text-center"></p>
                 <br>
-                <input class="w-full border-none outline-1 outline-gray-500 rounded-[5px] pl-2 py-2 text-[1rem] my-3" type="text" placeholder="Hello" id="txtCaesar">
+                <input class="w-full border-none outline-1 outline-gray-500 rounded-[5px] pl-2 py-2 text-[1rem] my-3" type="text" placeholder="Ex: Hello" id="txtCaesar">
                 <div class="flex justify-center gap-x-5">
                     <button id="btnEncrypt" class="cursor-pointer hover:bg-blue-600 px-4 py-1 bg-blue-500 text-white rounded">Encrypt</button>
                     <button id="btnDecrypt" class="cursor-pointer hover:bg-green-600 px-4 py-1 bg-green-500 text-white rounded">Decrypt</button>
@@ -151,8 +154,8 @@
                             <input class="w-full border-none outline-1 outline-gray-500 rounded-[5px] pl-2 py-2 text-[1rem] my-3" type="number" placeholder="5" id="primeSeconde">
                         </div>
                     </div>
-                    <div class="flex justify-center my-2"><button class="cursor-pointer hover:bg-yellow-600 px-4 py-1 bg-yellow-500 text-white rounded">Generate Key</button></div>
-                    <p class="text-[1.1rem] my-2">Result: </p>
+                    <div class="flex justify-center my-2"><button id="btnGenerate" class="cursor-pointer hover:bg-yellow-600 px-4 py-1 bg-yellow-500 text-white rounded">Generate Key</button></div>
+                    <p id="rsaResult" class="text-[1.1rem] my-2">Result: </p>
                 </div>
                 <h2 class="text-[1.2rem] md:text-2xl font-medium">3.3 RSA Encryption</h2>
                 <div class="w-[80%] mx-auto">
@@ -167,17 +170,17 @@
                         </div>
                         <div class="w-full">
                             <label for="modulus" class="text-[1.1rem]">Enter the modulus(n): </label>
-                            <input class="w-full border-none outline-1 outline-gray-500 rounded-[5px] pl-2 py-2 text-[1rem] my-3" type="modulus" placeholder="5" id="primeSeconde">
+                            <input class="w-full border-none outline-1 outline-gray-500 rounded-[5px] pl-2 py-2 text-[1rem] my-3" type="number" placeholder="5" id="modulusEn">
                         </div>
                     </div>
-                    <div class="flex justify-center my-2"><button class="cursor-pointer hover:bg-blue-600 px-4 py-1 bg-blue-500 text-white rounded">Encrypt</button></div>
-                    <p class="text-[1.1rem] my-2">Result: </p>
+                    <div class="flex justify-center my-2"><button id="btnRSAEncrypt" class="cursor-pointer hover:bg-blue-600 px-4 py-1 bg-blue-500 text-white rounded">Encrypt</button></div>
+                    <p id="rsaEncResult" class="text-[1.1rem] my-2">Result: </p>
                 </div>
                 <h2 class="text-[1.2rem] md:text-2xl font-medium">3.4 RSA Decryption</h2>
                 <div class="w-[80%] mx-auto">
                     <div class="w-full mt-5">
-                        <label for="txtEn" class="text-[1.1rem]">Enter your text Encrypted Message: </label>
-                        <input class="w-full border-none outline-1 outline-gray-500 rounded-[5px] pl-2 py-2 text-[1rem] my-3" type="text" placeholder="hello" id="txtEn">
+                        <label for="txtDe" class="text-[1.1rem]">Enter your number: </label>
+                        <input class="w-full border-none outline-1 outline-gray-500 rounded-[5px] pl-2 py-2 text-[1rem] my-3" type="number" placeholder="141112126" id="txtDe">
                     </div>
                     <div class="w-full flex justify-center gap-x-5">
                         <div class="w-full">
@@ -185,12 +188,12 @@
                             <input class="w-full border-none outline-1 outline-gray-500 rounded-[5px] pl-2 py-2 text-[1rem] my-3" type="number" placeholder="3" id="pKey">
                         </div>
                         <div class="w-full">
-                            <label for="modulusSe" class="text-[1.1rem]">Enter the modulus(n): </label>
-                            <input class="w-full border-none outline-1 outline-gray-500 rounded-[5px] pl-2 py-2 text-[1rem] my-3" type="modulusSe" placeholder="5" id="primeSeconde">
+                            <label for="modulusDe" class="text-[1.1rem]">Enter the modulus(n): </label>
+                            <input class="w-full border-none outline-1 outline-gray-500 rounded-[5px] pl-2 py-2 text-[1rem] my-3" type="number" placeholder="5" id="modulusDe">
                         </div>
                     </div>
-                    <div class="flex justify-center my-2"><button class="cursor-pointer hover:bg-green-600 px-4 py-1 bg-green-500 text-white rounded">Decrypt</button></div>
-                    <p class="text-[1.1rem] my-2">Result: </p>
+                    <div class="flex justify-center my-2"><button id="btnRSADecrypt" class="cursor-pointer hover:bg-green-600 px-4 py-1 bg-green-500 text-white rounded">Decrypt</button></div>
+                    <p id="rsaDecResult" class="text-[1.1rem] my-2">Result: </p>
                 </div>
             </div> 
         </section>
@@ -200,5 +203,5 @@
     <p class="text-xs text-gray-600 text-center mt-5">Dartpartment ITE Generation10</p>
    </footer>
 </body>
-<script src="./assets/javaScript/encrypt_decrypt.js"></script>
+<script type="module" src="./assets/javaScript/main.js"></script>
 </html>
