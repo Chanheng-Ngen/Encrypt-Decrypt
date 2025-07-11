@@ -252,9 +252,6 @@
   .w-\[330px\] {
     width: 330px;
   }
-  .w-\[340px\] {
-    width: 340px;
-  }
   .w-full {
     width: 100%;
   }
@@ -395,6 +392,9 @@
     --tw-font-weight: var(--font-weight-medium);
     font-weight: var(--font-weight-medium);
   }
+  .break-words {
+    overflow-wrap: break-word;
+  }
   .text-gray-500 {
     color: var(--color-gray-500);
   }
@@ -404,14 +404,8 @@
   .text-green-600 {
     color: var(--color-green-600);
   }
-  .text-green-700 {
-    color: var(--color-green-700);
-  }
   .text-red-600 {
     color: var(--color-red-600);
-  }
-  .text-red-700 {
-    color: var(--color-red-700);
   }
   .text-white {
     color: var(--color-white);
