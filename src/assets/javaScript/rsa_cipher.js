@@ -2,7 +2,7 @@
 function generateRSAKeys(p, q) {
     const n = BigInt(p) * BigInt(q);
     const phi = (BigInt(p) - 1n) * (BigInt(q) - 1n);
-
+    let e;
     do {
         e = BigInt(Math.floor(Math.random() * (Number(phi) - 2)) + 2); // Random e in range [2, φ(n) - 1]
     } while (gcd(e, phi) !== 1n);
