@@ -218,9 +218,9 @@ window.addEventListener('DOMContentLoaded', () => {
                 return;
             }
             
-            // Check if the encrypted message contains the separator
-            if (!encryptedMessage.includes('|')) {
-                const errorMsg = 'Invalid encrypted message format. Please use a message encrypted with this system.';
+            // Check if the encrypted message contains only digits and spaces
+            if (!/^[\d\s]+$/.test(encryptedMessage)) {
+                const errorMsg = 'Invalid encrypted message format. Please use only numbers and spaces from RSA encryption.';
                 resultDecrypt.textContent = errorMsg;
                 resultDecrypt.classList.add('text-error');
                 return;

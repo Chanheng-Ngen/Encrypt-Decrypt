@@ -160,40 +160,25 @@ function rsaEncrypt(message, publicKey) {
         throw new Error('Invalid public key values');
     }
     
-    // Calculate maximum safe value that can be encrypted
-    const maxValue = bigN - 1n;
-    const maxValueStr = maxValue.toString();
-    
-    // Calculate safe chunk size (number of digits we can safely encrypt)
-    const maxChunkSize = Math.max(1, maxValueStr.length - 1);
-    
-    // Convert message to padded character codes
-    const messageNumbers = [...message].map(char => {
-        const code = char.charCodeAt(0);
-        if (code > 255) {
-            throw new Error(`Character '${char}' is not supported (code: ${code})`);
+    // Convert message to character codes and encrypt each character individually
+    const encryptedChars = [];
+    for (const char of message) {
+        const charCode = char.charCodeAt(0);
+        if (charCode > 255) {
+            throw new Error(`Character '${char}' is not supported (code: ${charCode})`);
         }
-        return code.toString().padStart(3, '0');
-    }).join('');
-    
-    // Split into fixed-size chunks that fit safely in our key size
-    const chunks = [];
-    for (let i = 0; i < messageNumbers.length; i += maxChunkSize) {
-        chunks.push(messageNumbers.slice(i, i + maxChunkSize));
+        
+        const charBigInt = BigInt(charCode);
+        if (charBigInt >= bigN) {
+            throw new Error(`Character code ${charCode} is too large for key size ${bigN}`);
+        }
+        
+        const encrypted = charBigInt ** bigE % bigN;
+        encryptedChars.push(encrypted.toString());
     }
     
-    // Encrypt each chunk
-    const encryptedChunks = chunks.map(chunk => {
-        const chunkNum = BigInt(chunk);
-        if (chunkNum >= bigN) {
-            throw new Error(`Message chunk ${chunk} is too large for key size ${bigN}`);
-        }
-        const encrypted = chunkNum ** bigE % bigN;
-        return encrypted.toString();
-    });
-    
-    // Join with separator to maintain chunk boundaries
-    return encryptedChunks.join('|');
+    // Join with spaces for clear separation
+    return encryptedChars.join(' ');
 }
 
 // Function to decrypt a message using RSA
@@ -210,38 +195,28 @@ function rsaDecrypt(encryptedMessage, privateKey) {
         throw new Error('Invalid private key values');
     }
     
-    // Split encrypted message by separator
-    const encryptedChunks = encryptedMessage.split('|');
+    // Split by spaces to get individual encrypted characters
+    const encryptedChunks = encryptedMessage.split(' ').filter(chunk => chunk.trim() !== '');
     
     if (encryptedChunks.length === 0) {
         throw new Error('No valid chunks found in encrypted message');
     }
     
-    // Decrypt each chunk
-    let decryptedNumbers = '';
-    for (const chunk of encryptedChunks) {
-        if (chunk.trim() === '') continue;
-        
-        try {
-            const chunkNum = BigInt(chunk);
-            const decrypted = chunkNum ** bigD % bigN;
-            decryptedNumbers += decrypted.toString();
-        } catch (error) {
-            throw new Error(`Failed to decrypt chunk: ${chunk}`);
-        }
-    }
-    
-    // Convert back to characters
+    // Decrypt each chunk back to character
     const characters = [];
-    for (let i = 0; i < decryptedNumbers.length; i += 3) {
-        const codeStr = decryptedNumbers.slice(i, i + 3);
-        if (codeStr.length === 3) {
-            const charCode = parseInt(codeStr, 10);
+    for (const chunk of encryptedChunks) {
+        try {
+            const chunkNum = BigInt(chunk.trim());
+            const decrypted = chunkNum ** bigD % bigN;
+            const charCode = Number(decrypted);
+            
             if (charCode >= 0 && charCode <= 255) {
                 characters.push(String.fromCharCode(charCode));
             } else {
-                console.warn(`Invalid character code: ${charCode}`);
+                throw new Error(`Invalid character code: ${charCode}`);
             }
+        } catch (error) {
+            throw new Error(`Failed to decrypt chunk: ${chunk} - ${error.message}`);
         }
     }
     
